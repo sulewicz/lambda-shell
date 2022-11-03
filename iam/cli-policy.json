@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LambdaPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:CreateFunction",
+                "lambda:UpdateFunctionCode",
+                "lambda:InvokeFunction",
+                "lambda:DeleteFunction"
+            ],
+            "Resource": [
+                "arn:aws:lambda:*:*:function:lambda-shell"
+            ]
+        },
+        {
+            "Sid": "IamPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole",
+                "iam:DetachRolePolicy",
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:AttachRolePolicy"
+            ],
+            "Resource": [
+                "arn:aws:lambda:*:*:function:lambda-shell",
+                "arn:aws:iam::*:role/lambda-shell-role"
+            ]
+        },
+        {
+            "Sid": "StsPermissions",
+            "Effect": "Allow",
+            "Action": "sts:GetCallerIdentity",
+            "Resource": "*"
+        }
+    ]
+}
